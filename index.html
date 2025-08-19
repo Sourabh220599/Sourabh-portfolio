@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe | Software Engineer</title>
+    <style>
+        @import url('[https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap](https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap)');
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+       .container {
+            max-width: 960px;
+            margin: 40px auto;
+            padding: 40px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        header h2 {
+            margin: 5px 0 0;
+            font-size: 1.4em;
+            font-weight: 300;
+            color: #7f8c8d;
+        }
+
+       .section {
+            margin-bottom: 40px;
+        }
+
+       .section h3 {
+            font-size: 1.8em;
+            color: #34495e;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        #philosophy p {
+            font-size: 1.1em;
+            text-align: justify;
+            color: #555;
+        }
+
+        #skills dl {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        #skills dt {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2980b9;
+            padding-top: 15px;
+            border-top: 1px solid #ecf0f1;
+        }
+        
+        #skills dt:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        #skills dd {
+            margin-left: 0;
+            font-size: 1.05em;
+            padding-bottom: 10px;
+        }
+        
+        #skills dd strong {
+            color: #34495e;
+            font-weight: 700;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>John Doe</h1>
+            <h2>Software Engineer</h2>
+        </header>
+
+        <div id="philosophy" class="section">
+            <h3>Philosophy</h3>
+            <p>
+                A professional philosophy centered on three core principles: functionality, elegance, and user-centric design. This approach is rooted in a rigorous application of clean, efficient coding standards to build solutions that are inherently scalable and maintainable. The ultimate goal is the delivery of tangible, measurable value to the end-user and the business.
+            </p>
+        </div>
+
+        <div id="skills" class="section">
+            <h3>Technical Proficiency</h3>
+            <dl>
+                <dt>Languages & Runtimes</dt>
+                <dd><strong>Python:</strong> Expert proficiency in backend development, scripting, and data manipulation.</dd>
+                <dd><strong>JavaScript (ES6+):</strong> Advanced proficiency in frontend development and building interactive user interfaces.</dd>
+                <dd><strong>SQL:</strong> Advanced proficiency in complex query design, database management, and performance optimization.</dd>
+
+                <dt>Frameworks & Libraries</dt>
+                <dd><strong>Django:</strong> Expert proficiency in the rapid development of secure, scalable, and maintainable web applications and RESTful APIs.</dd>
+                <dd><strong>React:</strong> Advanced proficiency in building modern, component-based, and stateful single-page applications.</dd>
+                <dd><strong>Node.js:</strong> Proficient in creating fast and scalable server-side applications and microservices.</dd>
+
+                <dt>Databases & Caching</dt>
+                <dd><strong>PostgreSQL:</strong> Advanced proficiency in relational database design, administration, and leveraging advanced features for data integrity.</dd>
+                <dd><strong>MongoDB:</strong> Proficient in designing and managing NoSQL databases for flexible, schema-less data storage.</dd>
+                <dd><strong>Redis:</strong> Proficient in implementing in-memory data structures for high-performance caching and session management.</dd>
+
+                <dt>Cloud & DevOps</dt>
+                <dd><strong>AWS:</strong> Advanced proficiency in deploying and managing scalable applications using core services (EC2, S3, RDS, IAM).</dd>
+                <dd><strong>Docker:</strong> Advanced proficiency in containerizing applications to ensure consistent development, testing, and production environments.</dd>
+                <dd><strong>Git:</strong> Expert proficiency in version control, branch management strategies (GitFlow), and collaborative development workflows.</dd>
+            </dl>
+        </div>
+    </div>
+
+</body>
+</html>
