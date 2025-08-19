@@ -1,142 +1,1784 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>John Doe | Software Engineer</title>
-    <style>
-        @import url('[https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap](https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap)');
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sourabh Shirish More | Operations Manager</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --primary: #6366f1;
+                --primary-dark: #4f46e5;
+                --secondary: #06b6d4;
+                --accent: #f59e0b;
+                --success: #10b981;
+                --danger: #ef4444;
+                --dark: #0f172a;
+                --darker: #020617;
+                --light: #f8fafc;
+                
+                --text-xs: 0.75rem;
+                --text-sm: 0.875rem;
+                --text-base: 1rem;
+                --text-lg: 1.125rem;
+                --text-xl: 1.25rem;
+                --text-2xl: 1.5rem;
+                --text-3xl: 1.875rem;
+                --text-4xl: 2.25rem;
+                --text-5xl: 3rem;
+            }
 
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-        }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-       .container {
-            max-width: 960px;
-            margin: 40px auto;
-            padding: 40px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
+            body {
+                font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                background: var(--darker);
+                color: #d1d5db;
+                line-height: 1.7;
+                overflow-x: hidden;
+                font-size: var(--text-base);
+                font-weight: 400;
+            }
 
-        header {
-            text-align: center;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
-        }
+            /* Enhanced animated gradient background with better performance */
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: 
+                    radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 0%, rgba(6, 182, 212, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 100% 100%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
+                    linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.02) 75%),
+                    linear-gradient(-45deg, rgba(255, 255, 255, 0.01) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.01) 75%);
+                background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 60px 60px, 60px 60px;
+                z-index: -1;
+                animation: backgroundShift 20s ease-in-out infinite;
+                will-change: transform;
+            }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.8em;
-            font-weight: 700;
-            color: #2c3e50;
-        }
+            @keyframes backgroundShift {
+                0%, 100% { transform: scale(1) rotate(0deg); }
+                50% { transform: scale(1.1) rotate(1deg); }
+            }
 
-        header h2 {
-            margin: 5px 0 0;
-            font-size: 1.4em;
-            font-weight: 300;
-            color: #7f8c8d;
-        }
+            /* Enhanced floating particles with better performance */
+            .particles {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: -1;
+            }
 
-       .section {
-            margin-bottom: 40px;
-        }
+            .particle {
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: var(--primary);
+                border-radius: 50%;
+                animation: float 6s ease-in-out infinite;
+                box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+                will-change: transform, opacity;
+            }
 
-       .section h3 {
-            font-size: 1.8em;
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
+            .particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+            .particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 2s; }
+            .particle:nth-child(3) { top: 40%; left: 60%; animation-delay: 4s; }
+            .particle:nth-child(4) { top: 80%; left: 20%; animation-delay: 1s; }
+            .particle:nth-child(5) { top: 30%; left: 90%; animation-delay: 3s; }
 
-        #philosophy p {
-            font-size: 1.1em;
-            text-align: justify;
-            color: #555;
-        }
+            @keyframes float {
+                0%, 100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+                50% { transform: translateY(-20px) scale(1.5); opacity: 1; }
+            }
 
-        #skills dl {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
+            /* Enhanced glass morphism */
+            .glass {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 24px;
+                box-shadow: 
+                    0 8px 32px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
 
-        #skills dt {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: #2980b9;
-            padding-top: 15px;
-            border-top: 1px solid #ecf0f1;
-        }
-        
-        #skills dt:first-of-type {
-            border-top: none;
-            padding-top: 0;
-        }
+            .glass-card {
+                background: rgba(255, 255, 255, 0.03);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 20px;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                box-shadow: 
+                    0 8px 32px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
 
-        #skills dd {
-            margin-left: 0;
-            font-size: 1.05em;
-            padding-bottom: 10px;
-        }
-        
-        #skills dd strong {
-            color: #34495e;
-            font-weight: 700;
-        }
+            .glass-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                transition: left 0.8s;
+            }
 
-    </style>
-</head>
-<body>
+            .glass-card:hover::before {
+                left: 100%;
+            }
 
-    <div class="container">
-        <header>
-            <h1>John Doe</h1>
-            <h2>Software Engineer</h2>
+            .glass-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 
+                    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                    0 0 0 1px rgba(99, 102, 241, 0.3),
+                    0 0 40px rgba(99, 102, 241, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                border-color: rgba(99, 102, 241, 0.4);
+            }
+
+            /* Enhanced buttons */
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 16px 32px;
+                border-radius: 16px;
+                font-weight: 600;
+                font-size: var(--text-base);
+                text-decoration: none;
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                border: none;
+                cursor: pointer;
+                letter-spacing: 0.025em;
+            }
+
+            .btn-primary {
+                background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+                color: white;
+                box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+            }
+
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 12px 40px rgba(99, 102, 241, 0.4);
+            }
+
+            .btn-secondary {
+                background: rgba(255, 255, 255, 0.05);
+                color: #d1d5db;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .btn-secondary:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(99, 102, 241, 0.3);
+                transform: translateY(-2px);
+            }
+
+            /* Enhanced gradient text */
+            .gradient-text {
+                background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 100%);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                font-weight: 800;
+            }
+
+            /* Enhanced feature cards */
+            .feature-card {
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 20px;
+                padding: 32px;
+                transition: all 0.4s ease;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 
+                    0 4px 20px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            .feature-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                transform: scaleX(0);
+                transition: transform 0.4s ease;
+            }
+
+            .feature-card:hover::before {
+                transform: scaleX(1);
+            }
+
+            .feature-card:hover {
+                transform: translateY(-8px);
+                background: rgba(255, 255, 255, 0.05);
+                border-color: rgba(99, 102, 241, 0.2);
+                box-shadow: 
+                    0 20px 40px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            /* Enhanced metric cards */
+            .metric-card {
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
+                border: 1px solid rgba(99, 102, 241, 0.2);
+                border-radius: 16px;
+                padding: 24px;
+                text-align: center;
+                transition: all 0.3s ease;
+                box-shadow: 
+                    0 4px 20px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            .metric-card:hover {
+                transform: scale(1.05);
+                box-shadow: 
+                    0 15px 35px rgba(99, 102, 241, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: rgba(99, 102, 241, 0.4);
+            }
+
+            .metric-value {
+                font-size: var(--text-4xl);
+                font-weight: 800;
+                margin-bottom: 8px;
+                line-height: 1.2;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            /* Enhanced tabs */
+            .tab-container {
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 16px;
+                padding: 8px;
+                margin-bottom: 32px;
+                box-shadow: 
+                    0 4px 20px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            .tab-button {
+                background: transparent;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 12px;
+                color: #9ca3af;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: var(--text-sm);
+                letter-spacing: 0.025em;
+            }
+
+            .tab-button.active {
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                color: white;
+                box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+            }
+
+            .tab-button:hover:not(.active) {
+                background: rgba(255, 255, 255, 0.05);
+                color: #d1d5db;
+            }
+
+            /* Enhanced animations */
+            .fade-in {
+                opacity: 0;
+                transform: translateY(40px);
+                transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .fade-in.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .slide-in-left {
+                opacity: 0;
+                transform: translateX(-40px);
+                transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .slide-in-left.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .slide-in-right {
+                opacity: 0;
+                transform: translateX(40px);
+                transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .slide-in-right.visible {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            .stagger-1 { transition-delay: 0.1s; }
+            .stagger-2 { transition-delay: 0.2s; }
+            .stagger-3 { transition-delay: 0.3s; }
+
+            /* Enhanced header */
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                padding: 0;
+            }
+
+            .header.scrolled {
+                background: rgba(15, 23, 42, 0.95);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Enhanced navigation */
+            .nav-link {
+                color: #d1d5db;
+                text-decoration: none;
+                font-weight: 600;
+                transition: all 0.3s ease;
+                position: relative;
+                font-size: var(--text-sm);
+                letter-spacing: 0.025em;
+                padding: 8px 12px;
+                border-radius: 6px;
+                white-space: nowrap;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: -4px;
+                left: 50%;
+                width: 0;
+                height: 2px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                transition: all 0.3s ease;
+                transform: translateX(-50%);
+            }
+
+            .nav-link:hover::after {
+                width: 100%;
+            }
+
+            .nav-link:hover {
+                color: white;
+                background: rgba(99, 102, 241, 0.1);
+                transform: translateY(-1px);
+            }
+
+            /* Enhanced hero section */
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+                z-index: -1;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 2;
+            }
+
+            .hero-badge {
+                display: inline-flex;
+                align-items: center;
+                padding: 8px 16px;
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2));
+                border: 1px solid rgba(99, 102, 241, 0.3);
+                border-radius: 50px;
+                color: var(--primary);
+                font-size: var(--text-sm);
+                font-weight: 600;
+                margin-bottom: 24px;
+                box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 6vw, 4rem);
+                font-weight: 800;
+                line-height: 1.2;
+                margin-bottom: 24px;
+                letter-spacing: -0.02em;
+            }
+
+            .hero-subtitle {
+                font-size: var(--text-xl);
+                color: #9ca3af;
+                margin-bottom: 32px;
+                line-height: 1.6;
+                max-width: 600px;
+            }
+
+            /* Enhanced section styling */
+            .section {
+                padding: 120px 0;
+                position: relative;
+            }
+
+            .section-title {
+                font-size: clamp(2rem, 5vw, 3rem);
+                font-weight: 800;
+                text-align: center;
+                margin-bottom: 16px;
+                letter-spacing: -0.02em;
+                line-height: 1.2;
+            }
+
+            .section-subtitle {
+                font-size: var(--text-lg);
+                color: #9ca3af;
+                text-align: center;
+                margin-bottom: 64px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+                line-height: 1.6;
+            }
+
+            /* Enhanced chart container */
+            .chart-container {
+                position: relative;
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+                height: 350px;
+            }
+
+            /* ENHANCED CONTACT SECTION STYLES */
+            .contact-section {
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(6, 182, 212, 0.02));
+                position: relative;
+                overflow: hidden;
+            }
+
+            .contact-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: 
+                    radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.08) 0%, transparent 50%);
+                animation: contactBg 10s ease-in-out infinite alternate;
+            }
+
+            @keyframes contactBg {
+                0% { opacity: 0.3; }
+                100% { opacity: 0.6; }
+            }
+
+            .contact-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .contact-card {
+                background: rgba(255, 255, 255, 0.03);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 24px;
+                padding: 2rem;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                position: relative;
+                overflow: hidden;
+                box-shadow: 
+                    0 8px 32px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            .contact-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                transform: scaleX(0);
+                transition: transform 0.4s ease;
+            }
+
+            .contact-card:hover::before {
+                transform: scaleX(1);
+            }
+
+            .contact-card:hover {
+                transform: translateY(-12px) scale(1.02);
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(99, 102, 241, 0.3);
+                box-shadow: 
+                    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+                    0 0 0 1px rgba(99, 102, 241, 0.2),
+                    0 0 40px rgba(99, 102, 241, 0.15),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            }
+
+            .contact-icon {
+                width: 64px;
+                height: 64px;
+                border-radius: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.75rem;
+                margin-bottom: 1.5rem;
+                transition: all 0.4s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .contact-icon::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: inherit;
+                border-radius: inherit;
+                filter: blur(20px);
+                opacity: 0.6;
+                z-index: -1;
+            }
+
+            .contact-card:hover .contact-icon {
+                transform: scale(1.1) rotate(5deg);
+            }
+
+            .contact-title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: white;
+                margin-bottom: 0.5rem;
+                letter-spacing: -0.01em;
+            }
+
+            .contact-subtitle {
+                color: #9ca3af;
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+
+            .contact-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.75rem 1.5rem;
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.1));
+                border: 1px solid rgba(99, 102, 241, 0.2);
+                border-radius: 12px;
+                color: #d1d5db;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 0.9rem;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .contact-link::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                transition: left 0.6s;
+            }
+
+            .contact-link:hover::before {
+                left: 100%;
+            }
+
+            .contact-link:hover {
+                transform: translateY(-2px);
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.2));
+                border-color: rgba(99, 102, 241, 0.4);
+                color: white;
+                box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+            }
+
+            /* Quick Actions Section */
+            .quick-actions {
+                margin-top: 3rem;
+                text-align: center;
+            }
+
+            .quick-actions-title {
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: white;
+                margin-bottom: 1.5rem;
+                opacity: 0.9;
+            }
+
+            .quick-actions-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .quick-action-btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.875rem 1.75rem;
+                background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+                color: white;
+                text-decoration: none;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 0.9rem;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 
+                    0 8px 32px rgba(99, 102, 241, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .quick-action-btn:hover {
+                transform: translateY(-3px) scale(1.05);
+                box-shadow: 
+                    0 15px 40px rgba(99, 102, 241, 0.4),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            }
+
+            .quick-action-btn.secondary {
+                background: rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: #d1d5db;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            }
+
+            .quick-action-btn.secondary:hover {
+                background: rgba(255, 255, 255, 0.15);
+                border-color: rgba(99, 102, 241, 0.3);
+                color: white;
+                box-shadow: 0 8px 30px rgba(99, 102, 241, 0.2);
+            }
+
+            /* Status Indicator */
+            .status-indicator {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.5rem 1rem;
+                background: rgba(16, 185, 129, 0.1);
+                border: 1px solid rgba(16, 185, 129, 0.3);
+                border-radius: 50px;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #10b981;
+                margin-bottom: 2rem;
+            }
+
+            .status-dot {
+                width: 8px;
+                height: 8px;
+                background: #10b981;
+                border-radius: 50%;
+                animation: pulse 2s infinite;
+            }
+
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+
+            /* Profile image enhancements */
+            .profile-container {
+                position: relative;
+            }
+
+            .profile-image {
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                object-fit: cover;
+                border: 4px solid rgba(99, 102, 241, 0.3);
+                box-shadow: 
+                    0 20px 40px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                transition: all 0.4s ease;
+            }
+
+            .profile-container::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: -10px;
+                right: -10px;
+                bottom: -10px;
+                background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+                border-radius: 50%;
+                z-index: -1;
+                animation: rotate 4s linear infinite;
+                opacity: 0.8;
+            }
+
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+
+            .profile-container:hover .profile-image {
+                transform: scale(1.05);
+            }
+
+            /* Enhanced text styling */
+            p {
+                line-height: 1.7;
+                color: #d1d5db;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                color: white;
+                font-weight: 700;
+                line-height: 1.3;
+            }
+
+            /* Enhanced KPI cards */
+            .kpi-card {
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
+                border: 1px solid rgba(99, 102, 241, 0.2);
+                border-radius: 16px;
+                padding: 24px;
+                text-align: center;
+                transition: all 0.3s ease;
+                box-shadow: 
+                    0 4px 20px rgba(0, 0, 0, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            .kpi-card:hover {
+                transform: scale(1.05);
+                box-shadow: 
+                    0 15px 35px rgba(99, 102, 241, 0.2),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                border-color: rgba(99, 102, 241, 0.4);
+            }
+
+            .kpi-card p:first-child {
+                font-size: var(--text-3xl);
+                font-weight: 800;
+                margin-bottom: 8px;
+                line-height: 1.2;
+            }
+
+            .kpi-card p:last-child {
+                font-size: var(--text-sm);
+                color: #9ca3af;
+                margin: 0;
+            }
+
+            /* Enhanced tab content styling */
+            .tab-content {
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                box-shadow: 
+                    0 8px 32px rgba(0, 0, 0, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            }
+
+            .tab-content h3 {
+                font-size: var(--text-2xl);
+                font-weight: 700;
+                margin-bottom: 8px;
+                letter-spacing: -0.01em;
+            }
+
+            .tab-content p {
+                font-size: var(--text-base);
+                line-height: 1.7;
+                margin-bottom: 16px;
+            }
+
+            .tab-content .text-sm {
+                font-size: var(--text-sm);
+            }
+
+            /* Enhanced responsive design */
+            @media (max-width: 1024px) {
+                .contact-grid {
+                    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                    gap: 1.5rem;
+                }
+                
+                .quick-actions-grid {
+                    flex-direction: column;
+                    align-items: stretch;
+                    max-width: 300px;
+                    margin: 0 auto;
+                }
+                
+                .quick-action-btn {
+                    justify-content: center;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .hero-title {
+                    font-size: 2.5rem;
+                }
+                
+                .section {
+                    padding: 80px 0;
+                }
+                
+                .profile-image {
+                    width: 250px;
+                    height: 250px;
+                }
+                
+                .tab-button {
+                    font-size: var(--text-xs);
+                    padding: 8px 16px;
+                }
+                
+                .section-title {
+                    font-size: 2rem;
+                }
+                
+                .section-subtitle {
+                    font-size: var(--text-base);
+                }
+                
+                .contact-grid {
+                    grid-template-columns: 1fr;
+                    gap: 1rem;
+                }
+                
+                .contact-card {
+                    padding: 1.5rem;
+                }
+                
+                .contact-icon {
+                    width: 56px;
+                    height: 56px;
+                    font-size: 1.5rem;
+                }
+                
+                .nav-link {
+                    font-size: var(--text-xs);
+                    padding: 6px 8px;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .btn {
+                    padding: 12px 24px;
+                    font-size: var(--text-sm);
+                }
+                
+                .feature-card {
+                    padding: 24px;
+                }
+                
+                .metric-card {
+                    padding: 20px;
+                }
+                
+                .hero-title {
+                    font-size: 2rem;
+                }
+                
+                .hero-subtitle {
+                    font-size: var(--text-base);
+                }
+                
+                .nav-link {
+                    font-size: var(--text-xs);
+                    padding: 4px 6px;
+                }
+                
+                .contact-card {
+                    padding: 1.25rem;
+                }
+                
+                .quick-action-btn {
+                    padding: 0.75rem 1.5rem;
+                    font-size: 0.85rem;
+                }
+            }
+
+            /* Enhanced utility classes */
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 24px;
+            }
+
+            .text-center { text-align: center; }
+            .text-left { text-align: left; }
+            .text-right { text-align: right; }
+
+            .mb-1 { margin-bottom: 0.25rem; }
+            .mb-2 { margin-bottom: 0.5rem; }
+            .mb-4 { margin-bottom: 1rem; }
+            .mb-6 { margin-bottom: 1.5rem; }
+            .mb-8 { margin-bottom: 2rem; }
+            .mb-12 { margin-bottom: 3rem; }
+            .mb-16 { margin-bottom: 4rem; }
+
+            .mt-1 { margin-top: 0.25rem; }
+            .mt-2 { margin-top: 0.5rem; }
+            .mt-4 { margin-top: 1rem; }
+            .mt-6 { margin-top: 1.5rem; }
+            .mt-8 { margin-top: 2rem; }
+            .mt-12 { margin-top: 3rem; }
+            .mt-16 { margin-top: 4rem; }
+
+            .grid { display: grid; }
+            .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+            .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .gap-4 { gap: 1rem; }
+            .gap-6 { gap: 1.5rem; }
+            .gap-8 { gap: 2rem; }
+            .gap-12 { gap: 3rem; }
+
+            .flex { display: flex; }
+            .flex-col { flex-direction: column; }
+            .items-center { align-items: center; }
+            .justify-center { justify-content: center; }
+            .justify-between { justify-content: space-between; }
+            .space-x-4 > * + * { margin-left: 1rem; }
+            .space-y-4 > * + * { margin-top: 1rem; }
+
+            .hidden { display: none; }
+            .block { display: block; }
+
+            @media (min-width: 768px) {
+                .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+                .md\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+                .md\\:flex-row { flex-direction: row; }
+                .md\\:text-left { text-align: left; }
+                .md\\:justify-start { justify-content: flex-start; }
+                .md\\:mb-0 { margin-bottom: 0; }
+                .md\\:p-12 { padding: 3rem; }
+            }
+
+            .p-8 { padding: 2rem; }
+            .inline-flex { display: inline-flex; }
+            .px-8 { padding-left: 2rem; padding-right: 2rem; }
+            .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+            .rounded-full { border-radius: 9999px; }
+            .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+            .mr-3 { margin-right: 0.75rem; }
+
+            /* Legacy tab styles for compatibility */
+            .tab-active {
+                border-color: var(--primary);
+                color: white;
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(6, 182, 212, 0.1));
+                box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+            }
+
+            .tab-inactive {
+                border-color: transparent;
+                color: #9ca3af;
+                transition: all 0.3s ease;
+            }
+
+            .tab-inactive:hover {
+                color: #d1d5db;
+                background: rgba(99, 102, 241, 0.05);
+            }
+
+            html {
+                scroll-behavior: smooth;
+                scroll-padding-top: 80px;
+            }
+
+            @media (max-width: 767px) {
+                html {
+                    scroll-padding-top: 120px;
+                }
+            }
+
+            .fade-in-up {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            /* Consistent logo styling */
+            .tab-content img[alt*="Logo"] {
+                height: 3rem;
+                width: auto;
+                object-fit: contain;
+                max-width: 100%;
+                display: block;
+                margin-bottom: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Floating particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Header -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="flex justify-between items-center py-4">
+                    <div class="text-xl font-bold gradient-text">
+                        <a href="#" class="hover:opacity-80 transition-opacity">Sourabh S. More</a>
+                    </div>
+                    <nav class="flex items-center space-x-4 md:space-x-8">
+                        <a href="#about" class="nav-link">About</a>
+                        <a href="#philosophy" class="nav-link">Philosophy</a>
+                        <a href="#skills" class="nav-link">Skills</a>
+                        <a href="#experience" class="nav-link">Experience</a>
+                        <a href="#education" class="nav-link">Education</a>
+                        <a href="#contact" class="nav-link">Contact</a>
+                    </nav>
+                </div>
+            </div>
         </header>
 
-        <div id="philosophy" class="section">
-            <h3>Philosophy</h3>
-            <p>
-                A professional philosophy centered on three core principles: functionality, elegance, and user-centric design. This approach is rooted in a rigorous application of clean, efficient coding standards to build solutions that are inherently scalable and maintainable. The ultimate goal is the delivery of tangible, measurable value to the end-user and the business.
-            </p>
-        </div>
+        <main>
+            <!-- Hero Section -->
+            <section id="about" class="hero">
+                <div class="container">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div class="hero-content slide-in-left">
+                            <div class="hero-badge">
+                                <span class="mr-2">🚀</span>
+                                Available for New Opportunities
+                            </div>
+                            <h1 class="hero-title gradient-text">
+                                Operations Manager
+                            </h1>
+                            <p class="hero-subtitle">
+                                Building and scaling the operational backbone for high-growth companies. 
+                                Expertise in creating <span class="text-cyan-300 font-semibold">efficient processes</span>, 
+                                managing successful <span class="text-blue-300 font-semibold">partner ecosystems</span>, 
+                                and delivering a <span class="text-purple-300 font-semibold">world-class customer experience</span>.
+                            </p>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="#contact" class="btn btn-primary">
+                                    Get in Touch
+                                </a>
+                                <a href="#experience" class="btn btn-secondary">
+                                    View My Work
+                                </a>
+                            </div>
+                        </div>
+                        <div class="flex justify-center slide-in-right">
+                            <div class="profile-container">
+                                <img src="https://lh3.googleusercontent.com/d/1Sxf_rFvBVr98bHHXY2Ix73-n9EunmQZy"
+                                    alt="Sourabh Shirish More" 
+                                    class="profile-image"
+                                    style="object-position: 60% 10%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <div id="skills" class="section">
-            <h3>Technical Proficiency</h3>
-            <dl>
-                <dt>Languages & Runtimes</dt>
-                <dd><strong>Python:</strong> Expert proficiency in backend development, scripting, and data manipulation.</dd>
-                <dd><strong>JavaScript (ES6+):</strong> Advanced proficiency in frontend development and building interactive user interfaces.</dd>
-                <dd><strong>SQL:</strong> Advanced proficiency in complex query design, database management, and performance optimization.</dd>
+            <!-- Philosophy Section -->
+            <section id="philosophy" class="section">
+                <div class="container">
+                    <div class="text-center mb-16">
+                        <h2 class="section-title gradient-text">Operations Philosophy</h2>
+                        <p class="section-subtitle">
+                            Great service is built on great operations. A belief in creating systems where 
+                            <span class="text-cyan-300 font-semibold">efficiency and empathy coexist</span>, 
+                            leading to processes that are not only fast and scalable, but also fair and supportive 
+                            for both customers and partners.
+                        </p>
+                    </div>
+                    
+                    <!-- Philosophy Core Principles -->
+                    <div class="mb-16">
+                        <p class="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                            My operational philosophy centers around creating systems that are both efficient and empathetic. 
+                            I believe that the best processes are those that serve not just the business goals, but also 
+                            the people who execute them and the customers who benefit from them. This means building 
+                            workflows that are scalable, data-driven, and human-centered.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="feature-card fade-in stagger-1">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 mb-6">
+                                <span class="text-3xl">⚙️</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Process Optimization</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Identify bottlenecks and build streamlined workflows that reduce friction and improve speed.
+                            </p>
+                        </div>
+                        <div class="feature-card fade-in stagger-2">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 mb-6">
+                                <span class="text-3xl">🤝</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Partner Success</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Create systems that empower partners, because their success is essential for a great customer experience.
+                            </p>
+                        </div>
+                        <div class="feature-card fade-in stagger-3">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 mb-6">
+                                <span class="text-3xl">📈</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Data-Driven Decisions</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Use data to understand performance, make informed decisions, and drive continuous improvement.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                <dt>Frameworks & Libraries</dt>
-                <dd><strong>Django:</strong> Expert proficiency in the rapid development of secure, scalable, and maintainable web applications and RESTful APIs.</dd>
-                <dd><strong>React:</strong> Advanced proficiency in building modern, component-based, and stateful single-page applications.</dd>
-                <dd><strong>Node.js:</strong> Proficient in creating fast and scalable server-side applications and microservices.</dd>
+            <!-- Skills Section -->
+            <section id="skills" class="section glass">
+                <div class="container">
+                    <div class="text-center mb-16">
+                        <h2 class="section-title gradient-text">Technical Skills &amp; Continuous Learning</h2>
+                        <p class="section-subtitle">
+                            Committed to leveraging <span class="text-cyan-300 font-semibold">modern tools</span> to solve complex
+                            operational challenges. A focus on continuous learning in areas that drive 
+                            <span class="text-blue-300 font-semibold">efficiency and smarter decision-making</span>.
+                        </p>
+                    </div>
+                    
+                    <!-- Skills Overview -->
+                    <div class="mb-16">
+                        <p class="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                            My technical toolkit focuses on tools that drive operational efficiency and data-informed decision making. 
+                            I continuously invest in learning technologies that can automate routine tasks, provide deeper insights 
+                            into performance metrics, and enable predictive rather than reactive management approaches.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="feature-card fade-in stagger-1">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-500 mb-6">
+                                <span class="text-3xl">🤖</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">AI in Operations</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Exploring AI models to forecast support volume and automate trend analysis, 
+                                moving from reactive to predictive operational management.
+                            </p>
+                        </div>
+                        <div class="feature-card fade-in stagger-2">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 mb-6">
+                                <span class="text-3xl">💾</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">SQL for Data Analysis</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Using SQL to query raw operational data, build dashboards, and uncover 
+                                the insights that drive meaningful process improvements.
+                            </p>
+                        </div>
+                        <div class="feature-card fade-in stagger-3">
+                            <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-green-500 mb-6">
+                                <span class="text-3xl">📊</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-4">Advanced Google Sheets</h3>
+                            <p class="text-gray-300 leading-relaxed">
+                                Mastering advanced functions, scripts, and data visualization to create 
+                                real-time performance trackers for stakeholders.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-                <dt>Databases & Caching</dt>
-                <dd><strong>PostgreSQL:</strong> Advanced proficiency in relational database design, administration, and leveraging advanced features for data integrity.</dd>
-                <dd><strong>MongoDB:</strong> Proficient in designing and managing NoSQL databases for flexible, schema-less data storage.</dd>
-                <dd><strong>Redis:</strong> Proficient in implementing in-memory data structures for high-performance caching and session management.</dd>
+            <!-- Work Experience Section -->
+            <section id="experience" class="section">
+                <div class="container">
+                    <div class="text-center mb-16">
+                        <h2 class="section-title gradient-text">Work Experience</h2>
+                        <p class="section-subtitle">
+                            Explore key projects. Each case study demonstrates a core area of expertise 
+                            through tangible results and strategic actions.
+                        </p>
+                    </div>
 
-                <dt>Cloud & DevOps</dt>
-                <dd><strong>AWS:</strong> Advanced proficiency in deploying and managing scalable applications using core services (EC2, S3, RDS, IAM).</dd>
-                <dd><strong>Docker:</strong> Advanced proficiency in containerizing applications to ensure consistent development, testing, and production environments.</dd>
-                <dd><strong>Git:</strong> Expert proficiency in version control, branch management strategies (GitFlow), and collaborative development workflows.</dd>
-            </dl>
-        </div>
-    </div>
+                    <div class="tab-container">
+                        <div class="flex justify-center gap-2">
+                            <button data-tab="masai" class="tab-button active">
+                                Masai School
+                            </button>
+                            <button data-tab="tfi" class="tab-button">
+                                Teach for India
+                            </button>
+                            <button data-tab="akanksha" class="tab-button">
+                                The Akanksha Foundation
+                            </button>
+                        </div>
+                    </div>
 
-</body>
-</html>
+                    <div id="project-content" class="glass-card">
+                        <div id="masai" class="tab-content">
+                            <div class="p-8 md:p-12">
+                                <div class="grid md:grid-cols-2 gap-12 items-center">
+                                    <div>
+                                        <img src="https://lh3.googleusercontent.com/d/1MVwGTVOUJ4x9jEzQw7rOhLogIFGkSaN0" alt="Masai School Logo" class="h-12 w-auto mb-4 object-contain max-w-full">
+                                        <h3 class="text-2xl font-bold text-white mb-2">Partner Onboarding &amp; Success</h3>
+                                        <p class="text-sm font-semibold text-[#3b82f6] mb-4">July 2024 - Present</p>
+                                        <p class="text-gray-300 mb-6">Owned and optimized the end-to-end partner lifecycle, from onboarding to success. Architected scalable support funnels to manage a high volume of inbound queries, established a regular cadence of performance review meetings, and delivered measurable improvements in both partner satisfaction and financial efficiency.</p>
+                                        <div class="space-y-4 text-gray-300">
+                                            <p><span class="font-semibold text-[#3b82f6]">Key Action:</span> Designed and implemented a robust ticketing system and SOPs to handle over 1,000 monthly queries, improving 24-hour TAT adherence from 78% to 93%.</p>
+                                            <p><span class="font-semibold text-[#3b82f6]">Key Action:</span> Led weekly performance review meetings with cross-functional teams, using data from Google Sheets and SQL to analyze trends, forecast query volume, and drive process improvements that led to a 50% reduction in financial aid payouts.</p>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">50%</div>
+                                            <p class="text-sm text-gray-300">Reduced Financial Aid Payout</p>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">1,000+</div>
+                                            <p class="text-sm text-gray-300">Partner Queries Resolved Monthly</p>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">93%</div>
+                                            <p class="text-sm text-gray-300">24hr TAT Adherence</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tfi" class="tab-content hidden">
+                            <div class="p-8 md:p-12">
+                                <div class="grid md:grid-cols-2 gap-12 items-center">
+                                    <div>
+                                        <img src="https://lh3.googleusercontent.com/d/1z02S08tEJyrmi_lof2wvrpvhFeYrDot2" alt="Teach for India Logo" class="h-12 w-auto mb-4 object-contain max-w-full">
+                                        <h3 class="text-2xl font-bold text-white mb-2">Stakeholder Management in Complex Environments</h3>
+                                        <p class="text-sm font-semibold text-[#3b82f6] mb-4">July 2023 - March 2024 (9 months)</p>
+                                        <p class="text-gray-300 mb-6">Orchestrated a city-wide initiative in Pune, navigating the complexities of both public and private school systems to create a four-way partnership between 109 fellows, 23 schools, students, and parents. This required ensuring adherence to TFI policies while overcoming operational hurdles like securing permissions from government schools, adapting programs for low-infrastructure environments, and managing resistant staff to foster collaboration.</p>
+                                        <div class="space-y-4 text-gray-300">
+                                            <p><span class="font-semibold text-[#3b82f6]">Key Action:</span> Led the process of getting MOUs signed with 23 school leaders, formalizing partnerships and setting clear expectations for collaboration.</p>
+                                            <p><span class="font-semibold text-[#3b82f6]">Key Action:</span> Launched and facilitated city-wide gatherings for 109 fellows, creating a platform for the give-and-take of ideas and best practices between those in public and private schools.</p>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">109</div>
+                                            <p class="text-sm text-gray-300">Fellows Trained</p>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">23</div>
+                                            <p class="text-sm text-gray-300">School MOUs Signed</p>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">400+</div>
+                                            <p class="text-sm text-gray-300">Stakeholders Aligned</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="akanksha" class="tab-content hidden">
+                            <div class="p-8 md:p-12">
+                                <div class="grid md:grid-cols-2 gap-12 items-center">
+                                    <div>
+                                        <img src="https://lh3.googleusercontent.com/d/1lZgwpka6Lkg-_SfIhL20lpyJnuKDgcFW" alt="Akanksha Foundation Logo" class="h-12 w-auto mb-4 object-contain max-w-full">
+                                        <h3 class="text-2xl font-bold text-white mb-2">Student-Centric Learning &amp; Development</h3>
+                                        <p class="text-sm font-semibold text-[#3b82f6] mb-4">Oct 2021 - June 2023 (1 yr, 9 mos)</p>
+                                        <p class="text-gray-300 mb-6">Transformed the classroom from a place of passive listening to a hub of active, experiential learning. Designed and led hands-on projects and co-curricular activities that connected academic concepts to the real world, fostering not just knowledge, but also curiosity, confidence, and a love for learning.</p>
+                                        <div class="space-y-4 text-gray-300">
+                                            <p><span class="font-semibold text-[#3b82f6]">Key Action:</span> Launched the school's first-ever 'Young Innovators' science fair, where students designed and presented their own experiments, leading to a significant increase in subject interest.</p>
+                                            <p><span class="font-semibold text-[#3b82f6]">Key Action:</span> Developed and led a community clean-up project, integrating lessons on environmental science with practical, real-world action and civic responsibility.</p>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">75%</div>
+                                            <p class="text-sm text-gray-300">Increase in Project-Based Learning</p>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">40%</div>
+                                            <p class="text-sm text-gray-300">Growth in Co-Curricular Participation</p>
+                                        </div>
+                                        <div class="metric-card">
+                                            <div class="metric-value bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">100%</div>
+                                            <p class="text-sm text-gray-300">Student Engagement Rate</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="section">
+                <div class="container">
+                    <div class="text-center mb-16">
+                        <h2 class="section-title gradient-text">Education</h2>
+                    </div>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="glass-card p-12 text-center">
+                            <div class="flex items-center justify-center mb-8">
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
+                                    <span class="text-4xl">🎓</span>
+                                </div>
+                            </div>
+                            <h3 class="text-3xl font-bold text-white mb-4">Marathwada Mitra Mandal's College of Commerce</h3>
+                            <p class="text-xl text-cyan-300 font-semibold mb-3">Bachelor of Business Management - International Business</p>
+                            <p class="text-gray-300 mb-8">Pune, Maharashtra | Graduated: June 2021</p>
+                            <div class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-full font-bold shadow-lg">
+                                <span class="mr-3">🏆</span>
+                                First Class Distinction (68.50%)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Enhanced Contact Section -->
+            <section id="contact" class="section contact-section">
+                <div class="container">
+                    <div class="text-center mb-12">
+                        <div class="flex justify-center mb-6">
+                            <div class="status-indicator">
+                                <div class="status-dot"></div>
+                                Available for New Opportunities
+                            </div>
+                        </div>
+                        <h2 class="section-title gradient-text">Let's Build Something Amazing Together</h2>
+                        <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-8">
+                            Ready to optimize operations, scale processes, and drive measurable results. 
+                            Let's discuss how we can work together to achieve your business goals.
+                        </p>
+                    </div>
+
+                    <!-- Contact Cards Grid -->
+                    <div class="contact-grid fade-in">
+                        <!-- Phone Contact -->
+                        <div class="contact-card">
+                            <div class="contact-icon bg-gradient-to-br from-green-500 to-emerald-500">
+                                📞
+                            </div>
+                            <h3 class="contact-title">Call Me</h3>
+                            <p class="contact-subtitle">
+                                Ready to discuss your project? Let's have a quick call to explore opportunities.
+                            </p>
+                            <a href="tel:+919763932989" class="contact-link">
+                                <span>📱</span>
+                                <span>+91 9763932989</span>
+                                <span style="font-size: 0.8rem;">→</span>
+                            </a>
+                        </div>
+
+                        <!-- Email Contact -->
+                        <div class="contact-card">
+                            <div class="contact-icon bg-gradient-to-br from-blue-500 to-cyan-500">
+                                ✉️
+                            </div>
+                            <h3 class="contact-title">Send Message</h3>
+                            <p class="contact-subtitle">
+                                Prefer email? Drop me a detailed message about your requirements and timeline.
+                            </p>
+                            <a href="mailto:sourabhmore53@gmail.com?subject=Project%20Inquiry&body=Hi%20Sourabh,%0A%0AI'm%20interested%20in%20discussing%20a%20potential%20opportunity.%0A%0AProject%20Details:%0A-%20%0A%0ATimeline:%0A-%20%0A%0ABest%20regards," class="contact-link">
+                                <span>📧</span>
+                                <span>sourabhmore53@gmail.com</span>
+                                <span style="font-size: 0.8rem;">→</span>
+                            </a>
+                        </div>
+
+                        <!-- LinkedIn Contact -->
+                        <div class="contact-card">
+                            <div class="contact-icon bg-gradient-to-br from-purple-500 to-indigo-500">
+                                🔗
+                            </div>
+                            <h3 class="contact-title">Connect on LinkedIn</h3>
+                            <p class="contact-subtitle">
+                                Let's connect professionally and stay updated on industry insights and opportunities.
+                            </p>
+                            <a href="https://www.linkedin.com/in/sourabh-more-726a24143" target="_blank" rel="noopener noreferrer" class="contact-link">
+                                <span>💼</span>
+                                <span>Connect with me</span>
+                                <span style="font-size: 0.8rem;">↗</span>
+                            </a>
+                        </div>
+                    </div>
+
+                  
+                    <!-- Response Time Notice -->
+                    <div class="text-center mt-12 fade-in">
+                        <div class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full">
+                            <span class="text-blue-400">⚡</span>
+                            <span class="text-sm text-gray-300">
+                                Typically respond within <strong class="text-white">24 hours</strong>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="bg-gray-900/50 mt-20 border-t border-gray-700/50">
+            <div class="container mx-auto px-6 py-12">
+                <div class="grid md:grid-cols-3 gap-8 items-center">
+                    <div>
+                        <div class="text-xl font-bold gradient-text mb-2">Sourabh S. More</div>
+                        <p class="text-gray-400 text-sm">Operations Manager & Process Optimizer</p>
+                    </div>
+                    <!-- <div class="text-center">
+                        <p class="text-gray-400 text-sm mb-2">Let's connect and build something amazing</p>
+                        <div class="flex justify-center gap-4">
+                            <a href="tel:+919763932989" class="text-gray-400 hover:text-cyan-300 transition-colors text-sm">📞 Call</a>
+                            <a href="mailto:sourabhmore53@gmail.com" class="text-gray-400 hover:text-cyan-300 transition-colors text-sm">📧 Email</a>
+                            <a href="https://www.linkedin.com/in/sourabh-more-726a24143" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-cyan-300 transition-colors text-sm">🔗 LinkedIn</a>
+                        </div>
+                    </div> -->
+                    <div class="text-right md:text-right text-center">
+                        <p class="text-gray-400 text-sm">&copy; 2024 Sourabh Shirish More</p>
+                        <p class="text-gray-500 text-xs mt-1">Built with passion & precision</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Performance optimization - Intersection Observer with better settings
+                const observerOptions = {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            // Unobserve after animation to improve performance
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                // Observe all animated elements with better performance
+                document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+                    observer.observe(el);
+                });
+
+                // Enhanced tab switching with better performance
+                const tabButtons = document.querySelectorAll('.tab-button');
+                const tabContents = document.querySelectorAll('.tab-content');
+
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const tab = button.dataset.tab;
+                        
+                        // Use more efficient class toggling
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        tabContents.forEach(content => {
+                            content.classList.toggle('hidden', content.id !== tab);
+                        });
+                    });
+                });
+
+                // Optimized header scroll effect with throttling
+                const header = document.getElementById('header');
+                let isScrolling = false;
+
+                const handleScroll = () => {
+                    if (!isScrolling) {
+                        window.requestAnimationFrame(() => {
+                            if (window.scrollY > 50) {
+                                header.classList.add('scrolled');
+                            } else {
+                                header.classList.remove('scrolled');
+                            }
+                            isScrolling = false;
+                        });
+                        isScrolling = true;
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll, { passive: true });
+
+                // Enhanced smooth scrolling for navigation links
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const target = document.querySelector(this.getAttribute('href'));
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    });
+                });
+
+                // Contact card interaction enhancements
+                const contactCards = document.querySelectorAll('.contact-card');
+                contactCards.forEach(card => {
+                    card.addEventListener('mouseenter', () => {
+                        card.style.transform = 'translateY(-12px) scale(1.02)';
+                    });
+                    
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = '';
+                    });
+                });
+
+                // Add loading states for contact links
+                const contactLinks = document.querySelectorAll('.contact-link, .quick-action-btn');
+                contactLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        if (this.href.startsWith('mailto:') || this.href.startsWith('tel:')) {
+                            const originalText = this.innerHTML;
+                            this.innerHTML = this.innerHTML.replace('→', '✓');
+                            setTimeout(() => {
+                                this.innerHTML = originalText;
+                            }, 2000);
+                        }
+                    });
+                });
+
+                // Copy to clipboard functionality for contact info
+                const createCopyButton = (text, successMessage) => {
+                    return () => {
+                        navigator.clipboard.writeText(text).then(() => {
+                            // Show temporary success message
+                            const notification = document.createElement('div');
+                            notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 transition-all duration-300';
+                            notification.textContent = successMessage;
+                            document.body.appendChild(notification);
+                            
+                            setTimeout(() => {
+                                notification.style.opacity = '0';
+                                setTimeout(() => {
+                                    document.body.removeChild(notification);
+                                }, 300);
+                            }, 2000);
+                        });
+                    };
+                };
+
+                // Add double-click to copy functionality
+                const phoneLink = document.querySelector('a[href^="tel:"]');
+                const emailLink = document.querySelector('a[href^="mailto:"]');
+                
+                if (phoneLink) {
+                    phoneLink.addEventListener('dblclick', createCopyButton('+91 9763932989', '📞 Phone number copied!'));
+                }
+                
+                if (emailLink) {
+                    emailLink.addEventListener('dblclick', createCopyButton('sourabhmore53@gmail.com', '📧 Email copied!'));
+                }
+
+                // Chart configuration with better performance
+                Chart.defaults.font.family = "'Inter', sans-serif";
+                Chart.defaults.color = '#9ca3af';
+                Chart.defaults.plugins.tooltip.enabled = true;
+                Chart.defaults.plugins.tooltip.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+                Chart.defaults.plugins.tooltip.titleColor = '#f8fafc';
+                Chart.defaults.plugins.tooltip.bodyColor = '#f8fafc';
+                Chart.defaults.plugins.tooltip.cornerRadius = 8;
+                Chart.defaults.plugins.tooltip.displayColors = false;
+                Chart.defaults.plugins.tooltip.borderColor = 'rgba(99, 102, 241, 0.3)';
+                Chart.defaults.plugins.tooltip.borderWidth = 1;
+
+                // Initialize charts with lazy loading
+                const initializeChart = (chartId, config) => {
+                    const canvas = document.getElementById(chartId);
+                    if (canvas && canvas.getBoundingClientRect().top < window.innerHeight + 100) {
+                        const ctx = canvas.getContext('2d');
+                        if (ctx) {
+                            new Chart(ctx, config);
+                        }
+                    }
+                };
+
+                // Assessment scores chart
+                const assessmentChartConfig = {
+                    type: 'line',
+                    data: {
+                        labels: ['Pre-Training', 'Post-Training'],
+                        datasets: [{
+                            label: 'Competency Score',
+                            data: [60, 85],
+                            borderColor: '#6366f1',
+                            backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#6366f1',
+                            pointBorderColor: '#ffffff',
+                            pointBorderWidth: 2,
+                            pointRadius: 6,
+                            pointHoverRadius: 8,
+                            unit: '%'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: '25% Improvement in Partner Competency',
+                                font: { size: 16, weight: '600' },
+                                color: '#f9fafb',
+                                padding: { top: 10, bottom: 20 }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: () => '',
+                                    label: (context) => {
+                                        let label = context.dataset.label || '';
+                                        if (label) { label += ': '; }
+                                        if (context.parsed.y !== null) {
+                                            label += context.parsed.y + '%';
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                min: 50,
+                                max: 100,
+                                grid: { color: 'rgba(156, 163, 175, 0.1)' },
+                                ticks: { color: '#9ca3af' }
+                            },
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: '#9ca3af' }
+                            }
+                        }
+                    }
+                };
+
+                // Initialize chart on scroll
+                const chartObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            initializeChart('assessmentScoresChart', assessmentChartConfig);
+                            chartObserver.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                const chartCanvas = document.getElementById('assessmentScoresChart');
+                if (chartCanvas) {
+                    chartObserver.observe(chartCanvas);
+                }
+
+                // Add keyboard navigation for accessibility
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Tab') {
+                        document.body.classList.add('keyboard-navigation');
+                    }
+                });
+
+                document.addEventListener('mousedown', () => {
+                    document.body.classList.remove('keyboard-navigation');
+                });
+
+                // Preload critical images for better performance
+                const criticalImages = [
+                    'https://lh3.googleusercontent.com/d/1Sxf_rFvBVr98bHHXY2Ix73-n9EunmQZy'
+                ];
+
+                criticalImages.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+
+                console.log('🚀 Portfolio loaded successfully! Ready to make an impact.');
+            });
+
+            // Add CSS for keyboard navigation
+            const keyboardNavigationStyles = `
+                .keyboard-navigation *:focus {
+                    outline: 2px solid #6366f1 !important;
+                    outline-offset: 2px !important;
+                }
+            `;
+            
+            const styleSheet = document.createElement('style');
+            styleSheet.textContent = keyboardNavigationStyles;
+            document.head.appendChild(styleSheet);
+        </script>
+
+    </body>
+    </html>
